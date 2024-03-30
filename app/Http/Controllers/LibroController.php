@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Models\Libro;
+use App\Models\Categoria; // Agregamos el modelo Categoria
 
 class LibroController extends Controller
 {
@@ -26,7 +26,8 @@ class LibroController extends Controller
      */
     public function create()
     {
-        return view('libros.create');
+        $categorias = Categoria::all(); // Obtenemos todas las categorias
+        return view('libros.create', compact('categorias'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\CategoriaController;
 use App\Models\Libro;
 
 Route::get('/', function () {
@@ -11,3 +12,4 @@ Route::get('/', function () {
 
 Route::resource('libros', LibroController::class);
 
+Route::resource('categorias', CategoriaController::class);
