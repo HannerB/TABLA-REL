@@ -36,21 +36,25 @@ class LibroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string',
-            'contenido' => 'required|string',
-            'fecha' => 'nullable|date',
-            'categoria_id' => 'required|exists:categorias,id',
-        ]);
 
-        Libro::create($request->all());
+public function store(Request $request)
+{
+    $request->validate([
+        'titulo' => 'required|string|max:255',
+        'descripcion' => 'required|string',
+        'contenido' => 'required|string',
+        'fecha' => 'nullable|date',
+        'categoria_id' => 'required|exists:categorias,id',
+    ]);
 
-        return redirect()->route('libros.index')
-            ->with('success', 'Libro creado exitosamente.');
-    }
+    $libro = new Libro();
+    $libro->fill($request->except('_token')); // Excluir el campo _token
+    $libro->save();
+
+    return redirect()->route('libros.index')
+        ->with('success', 'Libro creado exitosamente.');
+}
+
 
     /**
      * Muestra el libro especificado.
