@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <h2>Commit de ejemplo</h2>
 
             @foreach ($libros as $item)
                 <div class="card mb-3">
