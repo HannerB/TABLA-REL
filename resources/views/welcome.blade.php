@@ -1,40 +1,20 @@
+<!-- resources/views/welcome.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h2>Commit de ejemplo</h2>
-
-            @foreach ($libros as $item)
-                <div class="card mb-3">
-                    <div class="card-header">{{$item->fecha->format('d M Y')}}</div>
-
-                    <div class="card-body">
-                        <h3>{{$item->titulo}}</h3>
-                        <p>Categoría: {{ $item->categoria->nombre }}</p>
-                        <p>{{ $item->descripcion }}</p>
-                        <div>
-
-                            @foreach ($item->etiquetas as $tag)
-                            <span class="badge badge-primary"># {{ $tag->nombre }}</span>
-                            @endforeach
-
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
+    <div class="container">
+        <h1>Bienvenido a la Biblioteca</h1>
+        <p>¡Explora nuestra colección de libros!</p>
+        <ul>
+            <li><a href="{{ route('libros.index') }}">Ver Lista de Libros</a></li>
+            <li><a href="{{ route('libros.create') }}">Agregar Nuevo Libro</a></li>
+        </ul>
+        <hr>
+        <p>También puedes acceder al CRUD de Categorías:</p>
+        <ul>
+            <li><a href="{{ route('categorias.index') }}">Ver Lista de Categorías</a></li>
+            <li><a href="{{ route('categorias.create') }}">Agregar Nueva Categoría</a></li>
+        </ul>
     </div>
-</div>
 @endsection
